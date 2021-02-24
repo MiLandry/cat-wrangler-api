@@ -1,0 +1,168 @@
+---
+swagger: "2.0"
+info:
+  description: "For wrangling cats"
+  version: "1.0.0"
+  title: "cat wrangler"
+schemes:
+- "https"
+paths:
+  /event:
+    post:
+      tags:
+      - "event"
+      summary: "Creates a new event"
+      operationId: "addEvent"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "event object to be scheduled"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      responses:
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "Event"
+    put:
+      tags:
+      - "event"
+      summary: "Update an existing event"
+      operationId: "updateevent"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "event object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "event not found"
+        "405":
+          description: "Validation exception"
+      x-swagger-router-controller: "Event"
+  /event/{eventId}:
+    get:
+      tags:
+      - "event"
+      summary: "Find event by ID"
+      description: "Returns a single event"
+      operationId: "geteventById"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "ID of event to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Event"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "event not found"
+      x-swagger-router-controller: "Event"
+    post:
+      tags:
+      - "event"
+      summary: "Updates a event in the store with form data"
+      operationId: "updateeventWithForm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "ID of event that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Updated name of the event"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "formData"
+        description: "Updated status of the event"
+        required: false
+        type: "string"
+      responses:
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "Event"
+    delete:
+      tags:
+      - "event"
+      summary: "Deletes a event"
+      operationId: "deleteevent"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "eventId"
+        in: "path"
+        description: "event id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "event not found"
+      x-swagger-router-controller: "Event"
+definitions:
+  Event:
+    type: "object"
+    required:
+    - "name"
+    - "startDateTime"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        example: "board game christmas get together"
+      startDateTime:
+        type: "string"
+        format: "date-time"
+        description: "date time for when event starts"
+    example:
+      startDateTime: "2000-01-23T04:56:07.000+00:00"
+      name: "board game christmas get together"
+      id: 0
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
