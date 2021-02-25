@@ -17,3 +17,7 @@ open http://localhost:8080/docs
 ```
 
 This project leverages the mega-awesome [swagger-tools](https://github.com/apigee-127/swagger-tools) middleware which does most all the work.
+
+
+## How do you implement the stubs
+I think you add your ORM / middle ware to the service layer (eg EventService.js)
