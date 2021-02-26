@@ -7,7 +7,7 @@
  * body Event event object to be scheduled
  * no response value expected for this operation
  **/
-exports.addEvent = function(body) {
+exports.addevent = function(body) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
