@@ -37,7 +37,7 @@ exports.addEvent = function(body) {
  * api_key String  (optional)
  * no response value expected for this operation
  **/
-exports.deleteevent = function(eventId,api_key) {
+exports.deleteEvent = function(eventId,api_key) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -51,10 +51,11 @@ exports.deleteevent = function(eventId,api_key) {
  * eventId Long ID of event to return
  * returns Event
  **/
-exports.geteventById = function(eventId) {
+exports.getEventById = function(eventId) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
+  "creator" : "John Doe",
   "startDateTime" : "2000-01-23T04:56:07.000+00:00",
   "name" : "board game christmas get together",
   "id" : 0
@@ -74,7 +75,7 @@ exports.geteventById = function(eventId) {
  * body Event event object that needs to be added to the store
  * no response value expected for this operation
  **/
-exports.updateevent = function(body) {
+exports.updateEvent = function(body) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -89,7 +90,7 @@ exports.updateevent = function(body) {
  * status String Updated status of the event (optional)
  * no response value expected for this operation
  **/
-exports.updateeventWithForm = function(eventId,name,status) {
+exports.updateEventWithForm = function(eventId,name,status) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
