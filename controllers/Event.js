@@ -14,10 +14,10 @@ module.exports.addEvent = function addEvent (req, res, next) {
     });
 };
 
-module.exports.deleteevent = function deleteevent (req, res, next) {
+module.exports.deleteEvent = function deleteEvent (req, res, next) {
   var eventId = req.swagger.params['eventId'].value;
   var api_key = req.swagger.params['api_key'].value;
-  Event.deleteevent(eventId,api_key)
+  Event.deleteEvent(eventId,api_key)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -26,9 +26,9 @@ module.exports.deleteevent = function deleteevent (req, res, next) {
     });
 };
 
-module.exports.geteventById = function geteventById (req, res, next) {
+module.exports.getEventById = function getEventById (req, res, next) {
   var eventId = req.swagger.params['eventId'].value;
-  Event.geteventById(eventId)
+  Event.getEventById(eventId)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -37,9 +37,9 @@ module.exports.geteventById = function geteventById (req, res, next) {
     });
 };
 
-module.exports.updateevent = function updateevent (req, res, next) {
+module.exports.updateEvent = function updateEvent (req, res, next) {
   var body = req.swagger.params['body'].value;
-  Event.updateevent(body)
+  Event.updateEvent(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -48,11 +48,11 @@ module.exports.updateevent = function updateevent (req, res, next) {
     });
 };
 
-module.exports.updateeventWithForm = function updateeventWithForm (req, res, next) {
+module.exports.updateEventWithForm = function updateEventWithForm (req, res, next) {
   var eventId = req.swagger.params['eventId'].value;
   var name = req.swagger.params['name'].value;
   var status = req.swagger.params['status'].value;
-  Event.updateeventWithForm(eventId,name,status)
+  Event.updateEventWithForm(eventId,name,status)
     .then(function (response) {
       utils.writeJson(res, response);
     })
