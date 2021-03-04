@@ -32,7 +32,7 @@ paths:
       tags:
       - "event"
       summary: "Update an existing event"
-      operationId: "updateevent"
+      operationId: "updateEvent"
       consumes:
       - "application/json"
       produces:
@@ -58,7 +58,7 @@ paths:
       - "event"
       summary: "Find event by ID"
       description: "Returns a single event"
-      operationId: "geteventById"
+      operationId: "getEventById"
       produces:
       - "application/json"
       - "application/xml"
@@ -83,7 +83,7 @@ paths:
       tags:
       - "event"
       summary: "Updates a event in the store with form data"
-      operationId: "updateeventWithForm"
+      operationId: "updateEventWithForm"
       consumes:
       - "application/x-www-form-urlencoded"
       produces:
@@ -114,7 +114,7 @@ paths:
       tags:
       - "event"
       summary: "Deletes a event"
-      operationId: "deleteevent"
+      operationId: "deleteEvent"
       produces:
       - "application/json"
       - "application/xml"
@@ -141,6 +141,7 @@ definitions:
     required:
     - "name"
     - "startDateTime"
+    - "creator"
     properties:
       id:
         type: "integer"
@@ -152,10 +153,14 @@ definitions:
         type: "string"
         format: "date-time"
         description: "date time for when event starts"
+      creator:
+        type: "string"
+        description: "User that created event"
+        example: "John Doe"
     example:
       startDateTime: "2000-01-23T04:56:07.000+00:00"
       name: "board game christmas get together"
-      id: 0
+      creator: "John Doe"
   ApiResponse:
     type: "object"
     properties:
