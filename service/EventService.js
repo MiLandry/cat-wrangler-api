@@ -39,6 +39,7 @@ exports.geteventById = function(eventId) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
+  "creator" : "John Doe",
   "startDateTime" : "2000-01-23T04:56:07.000+00:00",
   "name" : "board game christmas get together",
   "id" : 0
