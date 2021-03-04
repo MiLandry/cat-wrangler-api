@@ -1,6 +1,5 @@
 'use strict';
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+
 
 /**
  * Creates a new event
@@ -10,21 +9,6 @@ var url = "mongodb://localhost:27017/";
  **/
 exports.addEvent = function(body) {
   return new Promise(function(resolve, reject) {
-    // save event
-
-    MongoClient.connect(url, function(err, db) {
-      console.log('body', body)
-      if (err) throw err;
-      var dbo = db.db("cat-wrangler");
-      delete body.id
-      dbo.collection("event").insertOne(body, function(err, res) {
-        if (err) throw err;
-        console.log("1 document inserted");
-        db.close();
-      });
-    });
-
-
     resolve();
   });
 }
