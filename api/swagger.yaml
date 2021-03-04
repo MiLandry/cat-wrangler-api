@@ -12,7 +12,7 @@ paths:
       tags:
       - "event"
       summary: "Creates a new event"
-      operationId: "addevent"
+      operationId: "addEvent"
       consumes:
       - "application/json"
       produces:

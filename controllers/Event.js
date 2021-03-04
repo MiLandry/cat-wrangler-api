@@ -3,9 +3,9 @@
 var utils = require('../utils/writer.js');
 var Event = require('../service/EventService');
 
-module.exports.addevent = function addevent (req, res, next) {
+module.exports.addEvent = function addEvent (req, res, next) {
   var body = req.swagger.params['body'].value;
-  Event.addevent(body)
+  Event.addEvent(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
